@@ -1,31 +1,30 @@
 Schedule (+ progress tracking)
 - [x] 12/10: get client + app idea
 - [x] 12/15: design company logo
-- [ ] 12/15: design prototype
-- [ ] 12/16: show prototype to client (get + record feedback)
-- [ ] 12/19: update prototype accordingly
-- [ ] 12/26: create algorithm
-- [ ] 01/02: create code (leeway for small errors)
-- [ ] 01/03: show product to client (get + record feedback)
-- [ ] 01/07: implement (some) feedback in code
-- [ ] 01/11: test cases + edit code if errors
-- [ ] 01/12: close project
+- [x] 12/22: design prototype
+- [ ] 12/23: show prototype to client (get + record feedback)
+- [ ] 12/25: update prototype accordingly
+- [ ] 12/31: create algorithm
+- [ ] 01/07: create code (leeway for small errors)
+- [ ] 01/08: show product to client (get + record feedback)
+- [ ] 01/12: implement (some) feedback in code
+- [ ] 01/15: test cases + edit code if errors
+- [ ] 01/16: close project
 
 Pre-planning
 - company name: SONRAY Calendars
-- company logo: see Calendar Logo
+- company logo: see ICS4U-Summative-Project/Calendar Logo
 - client: Rahana Ashraf
 - client needs: calendar for general utility (manage events, check dates, etc.)
 
 Division of labour
 - Sameer: get client, schedule client meetings
-- Owen: company logo, get extra graphics (image files to be uploaded)
-- Nuzhat: "Schedule (+ progress tracking)"
-- work on simultaneously: prototype
-- work divided in several small sections while developing: algorithm, code
+- Owen: company logo, extra icons (in prototype), search bar (in prototype)
+- Nuzhat: create schedule + track progress, prototype (except extra icons and search bar)
+- work divided in several small sections: algorithm, code
 
 Prototype
-- see [...]
+- see ICS4U-Summative-Project/Prototype
 
 Algorithm
 [...]
