@@ -2,14 +2,28 @@ Schedule (+ progress tracking)
 - [x] 12/10: get client + app idea
 - [x] 12/15: design company logo
 - [x] 12/22: design prototype
-- [ ] 12/23: show prototype to client (get + record feedback)
-- [ ] 12/25: update prototype accordingly
+- [x] 12/23: show prototype to client (get + record feedback)
+- [x] 12/25: update prototype accordingly
+  note: finished one day early
 - [ ] 12/31: create algorithm
 - [ ] 01/07: create code (leeway for small errors)
 - [ ] 01/08: show product to client (get + record feedback)
-- [ ] 01/12: implement (some) feedback in code
+- [ ] 01/12: implement feedback in code
 - [ ] 01/15: test cases + edit code if errors
 - [ ] 01/16: close project
+
+Meetings
+- [x] 12/23, 3:00 p.m. - 4:00 p.m.: show prototype to client
+  feedback recieved:
+    - make events that have already passed purple
+    - make events that repeat same colour as regular events (i.e. change from purple to green)
+    - unitalicize "Go to: [...]" in search bar
+    - when hovering over "Go to: [...]" in search bar, underline (instead of bold)
+    - add lines between dates in search bar
+    - when hovering over event in search bar, underline (instead of enclose in grey circling)
+    - settings option to change colours
+- [x] 12/23, 4:00 p.m. - 5:00 p.m.: team meeting to discuss feedback received (decide what to implement and what not)
+  note: implement all feedback except last point (decided could take too long to implement)
 
 Pre-planning
 - company name: SONRAY Calendars
@@ -25,6 +39,7 @@ Division of labour
 
 Prototype
 - see ICS4U-Summative-Project/Prototype
+- see ICS4U-Summative-Project/Prototype (after feedback)
 
 Algorithm
 [...]
