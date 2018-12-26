@@ -4,7 +4,6 @@ Schedule (+ progress tracking)
 - [x] 12/22: design prototype
 - [x] 12/23: show prototype to client (get + record feedback)
 - [x] 12/25: update prototype accordingly
-  note: finished one day early
 - [ ] 12/31: create algorithm
 - [ ] 01/07: create code (leeway for small errors)
 - [ ] 01/08: show product to client (get + record feedback)
@@ -40,6 +39,7 @@ Division of labour
 Prototype
 - see Prototype.pdf
 - see Prototype (after feedback).pdf
+- see Prototype (final).pdf
 
 Algorithm
 - create enum with months and their number of days (add method to set Feb = 28 when not leap year, Feb = 29 when leap year)
