@@ -42,4 +42,11 @@ Prototype
 - see Prototype (after feedback).pdf
 
 Algorithm
-[...]
+- create enum with months and their number of days (add method to set Feb = 28 when not leap year, Feb = 29 when leap year)
+- equation for finding what day of week month starts on:
+  weekday = (1 + floor(2.6*month - 0.2) - 2*century + yearInCentury + floor(yearInCentury/4) + floor(century/4)) mod 7
+  - weekday is weekday (sunday = 0, saturday = 6)
+  - month is month with different numbering (march = 1, april = 2, ... jan = 11, feb = 12)
+  - if month is jan or feb, use previous year for next two steps
+  - century is century (e.g. if year is 2018, century = 20)
+  - yearInCentury is last two digits of year (e.g. if year is 2018, yearInCentury = 18)
