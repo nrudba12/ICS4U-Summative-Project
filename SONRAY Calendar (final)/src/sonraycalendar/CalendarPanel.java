@@ -154,7 +154,7 @@ public class CalendarPanel extends JPanel {
 		if (xOrY) return (square - 1) % 7 * squareWidth + xoffset;
 		else return (square - 1) / 7 * squareHeight + yoffset;
 	}
-	
+	//
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
