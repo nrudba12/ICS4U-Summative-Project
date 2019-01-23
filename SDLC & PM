@@ -1,0 +1,181 @@
+brainstorming
+* pitch ideas to client if they don’t already have something in mind
+-	contacts app
+-	calendar app
+-	measurement converter
+-	to-do list/agenda (e.g. iPhone reminders app)
+
+pre-planning
+-	company name: SONRAY Calendar
+-	company logo: see Company Logo.png
+-	client: Rahana Ashraf
+-	client needs: calendar app for general utility (see dates, manage event, etc.)
+
+division of labour
+-	Sameer: get client, schedule client and team meetings
+-	Owen: design company logo, design in-app icons
+-	Nuzhat: create schedule (except meetings), debug code
+-	prototype: 60-30-10 (Sameer-Owen-Nuzhat)
+-	algorithm: 40-30-30 (Sameer-Owen-Nuzhat)
+-	code (not including debugging): 10-25-65  (Sameer-Owen-Nuzhat)
+
+schedule/to-do list
+-	[x] 12/10: get client + app idea
+-	[x] 12/15: design company logo
+-	[x] 12/23: show prototype to client (get + record feedback)
+-	[x] 12/25: update prototype accordingly
+-	[x] 12/31: create algorithm
+-	[x] 01/07: create code (leeway for small errors)
+-	[x] 01/08: show product to client (get + record feedback)
+-	[x] 01/12: implement feedback in code
+-	[x] 01/15: test cases + edit code as necessary
+-	[x] 01/16: close project
+
+progress tracking
+* early/late/on time in reference to schedule
+** meetings—see: meetings + feedback
+*** dates refer to when finished, not started
+-	12/09 (early) Sameer gets client (Rahana Ashraf) for calendar app
+-	12/13 (early): Owen designs company logo (see: Calendar Logo.png)
+-	12/22 (on time): all design prototype
+-	12/23 (on time): meeting—show prototype to client
+-	12/23: meeting—discuss client feedback, decide changes to be made in prototype
+-	12/26 (late): all (mostly Sameer and Owen) update prototype for feedback + add changes
+-	12/29 (early): all (mostly Sameer) create algorithm
+-	12/30: meeting—discuss possible changes to program
+-	01/06: meeting—give code created so far to Nuzhat (her job to merge)
+-	01/07 (on time): all (mostly Nuzhat) create code, some errors (see: test cases)
+-	01/08 (on time): meeting—show product to client
+-	01/08: meeting—discuss client feedback, decide changes to be made in program
+-	01/14 (late): Nuzhat implements changes in code
+  -	note: on 01/10, Owen also creates one more icon, Icon.location()
+-	01/18 (late): Nuzhat records test cases (see: test cases), edits code accordingly
+  -	note: also optimizes + organizes code, changes names (e.g. Icon to Drawing Utilities)
+-	01/18 (late): close project
+-	01/26: show finished product to client
+
+meetings + feedback
+-	[x] 12/23, 4:00 PM – 5:00 PM: show prototype to client
+  feedback received:
+    - change past events to purple
+    - change repeating events to green (like regular events)
+    -	unitalicize "Go to [...]" in search bar
+    -	underline "Go to [...]" in search bar when hovering or clicked
+    -	separate dates in search bar with lines
+    -	underline result in search bar when hovering or selected (not grey circle)
+    -	settings option to change theme colours
+-	[x] 12/23, 5:00 PM – 6:00 PM: discuss client feedback, decide changes to be made in prototype
+  more details:
+    -	decided to implement all feedback except settings (too much to code)
+    -	decided to add panel to show current time + button to go to current month
+    -	informed client of decisions
+-	[x] 12/30, 2:00 PM – 4:00 PM: discuss possible changes to program
+  more details:
+    -	maybe get rid of repeat and start/end dates (replace with singular date)
+      -	try creating code with repeat and start/end dates but get rid of if too difficult
+    -	get rid of "Go to [...]" in search bar (only search event titles)
+-	[x] 01/06, 2:00 PM – 2:30 PM: give code created to Nuzhat (her job to merge)
+-	[x] 01/08, 4:00 PM – 5:00 PM: show product to client
+  feedback received:
+    -	make "set time" and "all day" buttons easier to click (program requires to click on specific circle instead of in general area)
+    -	make default title and default notes italic
+-	[x] 01/08, 5:00 PM – 5:30 PM: discuss client feedback, decide changes to be made in code
+  more details:
+  -	decided to implement all feedback
+-	[ ] 01/26, 2:00 PM – 3:00 PM: show finished product to client
+
+algorithm
+* slight changes while coding, e.g. names
+** sorted alphabetically, not in order of program flow
+calendar panel (previously calendar display)
+-	see: Prototype (final).pdf
+-	set panel to ⅔ window width, ¾ window height
+-	set var squareWidth slightly less than 1/7 of panel width (enough room for border)
+-	set var squareHeight to slightly less than panel (enough room for border and for weekday titles)
+-	when mouse pressed, get x and y location of mouse, calculate which square pressed using squareWidth and squareHeight vals (remember to account for offsets)
+-	pass getSelectedDay() (which just calculates date associated with which square pressed) as parameter to side panel setSelectedDay()
+-	draw border around selected day (keep border until unselected, i.e. something outside panel is pressed)	when mouse hovering, get x and y location of press, calculate which square hovered using squareWidth and squareHeight vals (remember to account for offsets)
+-	draw border around selected day (only while mouse still hovering)
+	setMonth(int month, int year): change panel to display specified month (changes numbering, changes events shown, etc.)
+	to number month properly:
+-	create array of 42 numbers
+-	use month.getWeekday(String date + 1 (where days is yyyyMMdd and represents first day of current month) to find which weekday month starts on (var weekday)
+-	use month.getDays(int month) to find how many days month has) (var days)
+-	set elements [weekday] to [days] of array as numbers for one to days
+-	set preceding array elements with last few numbers of last month (use month.getDays(int month) for last, e.g. 27 28 29 30) and set following array elements as numbers one to some int (count up by one until reaching end)
+drawing utilities (previously icon)
+* utility methods for drawing stuff (figure out as code and test)
+event button
+* used by all buttons in program
+-	make invisible
+-	var hovering
+-	if mouse hovers button, hovering = true, else, hovering = false (repaint panel button is in every time hovering changes)
+-	if mouse presses button Runnable.run() (different for each button; pass Runnable object to method initializing event button mouse listener)
+event data
+-	var events: list of all events
+-	var title, date, time, notes (all strings)
+-	serialize(): stores events into .ser file
+-	deserialize(): reads .ser file (should contain array of event data objects) and adds each object in array to list (** file only contain array because less data that list, var events is list b/c dynamically changed throughout program)
+-	update(String title, date, time, notes): change corresponding fields to parameters (use verifyDate() and verifyTime() for date and time, respectively)
+-	verifyTime(String time): check if time in HH:mm AM - HH:mm PM format (some leeway, e.g. not capitalized), check if each hour and minute valid (i.e. nothing more than 12 and 60 respectively), check if first time before second time, then return string in format HHmmHHmm (hours in 24 hr time) (if any earlier checks fail, return null) 
+-	verifyDate(String date): check if in MM/dd/yyyy (some leeway, e.g. “1” as month instead of “01”), check if month valid (i.e. not more than 12) and day valid (Month.getDays(int month)) for whatever month is, then return string in format yyyyMMdd (if any earlier checks fail, return null)
+-	getColour(boolean dark): checks if object’s date is before today’s date (if yes, return purple, if no, return green) (** colour darker if parameter == true, lighter if not)
+- event panel (previously event display)
+-	have instance of event data and display its title, date (in format Tuesday, January 1, 2019), time (“all day” or in format 12:00 AM - 12:00 PM), and notes; labels and text fields used for displaying are uneditable; count lines in notes and adjust size in order to tightly fit (see: Prototype (final).pdf)
+-	pencil icon in bottom right corner (instance of event button) when pressed, makes screen longer (not wider), reformats (see: Prototype (final).pdf)
+-	(set time and all day instances of event button) when set time button clicked, shows text field beside it to set time (automatically set to “12:00 AM - 12:00 PM”; editable) and unclicks all day button; when all day button clicked, unclicks set time (text field also disappears and become unusable)
+-	date in text field; automatically set to today’s date; editable
+-	title and notes text fields; automatically set to “Add title” and “Add notes” respectively; when clicked, automatic text disappears, if left blank and user clicks somewhere else, text field automatically reset to its default
+-	garbage (event button) deletes event (i.e. removes from events list in event data)
+-	update (event button): tries to update event's data;  run EventData.verifyDate() and EventData.verifyTime() to check if date and time valid (cannot enter wrong form, e.g. “jan 1, 2019” instead of “01/01/2019,” or enter invalid date or time, e.g. “3:00 PM - 1:00 PM”); if successfully updated, reset to uneditable mode and reset event data values; if unsuccessful, stay on edit mode, don’t update, open dialogue box telling mistake (e.g. “invalid time entered”)
+manager
+-	carry global variables sidePanel, calendarDisplay, eventDisplay, calendarPanel, searchDisplay carrying one object (types related to names)
+-	cannot be directly instantiated, instead getInstance() method returning same instance of self every time called
+-	initializes window
+-	variables referenced from anywhere in program
+month
+-	enum with every month (each month has related name and max number or days)
+-	methods getDays() and getName() both static and take number as parameter; e.g. getDays(1) would return max number of days for January
+-	static method leapYear() takes boolean as parameter; if true, set February’s max number of days to 29, if false, set to 28
+-	getWeekday() takes int month, day, year as parameters; weekday = (1 + floor(2.6*month - 0.2) - 2*century + yearInCentury + floor(yearInCentury/4) + floor(century/4)) mod 7
+-	weekday is weekday (sunday = 0, saturday = 6)
+-	month is month (march = 1, april = 2, ... jan = 11, feb = 12)
+-	if month is jan or feb, use previous year for next two steps
+-	century is century (e.g. if year is 2018, century = 20)
+-	yearInCentury is last two digits of year (e.g. if year is 2018, yearInCentury = 18)
+search panel (previously search display)
+-	pass string “entry” to instantiate
+-	searches titles of events in events list in event data to see if any contain string entry
+-	if yes, displays in panel (does so for every event meeting criteria)
+-	displayed: see: Prototype (final).pdf
+-	if “result” in search display clicked, creates event display (sets its event data instance to whichever event data corresponds to result clicked)
+-	update(): takes string as parameter, resets string entry to its parameter, resets display
+side panel (previously side display)
+-	checks dates of events in eventdata (if calendar display has day clicked (check using CalendarDisplay.isDaySelected()), look for events with selected day, otherwise, looks for events set to today, tomorrow, or day after
+-	format: see: Prototype (final).pdf
+-	if event displayed hovered or clicked, make colour darker and set text to white instead of black
+-	if event clicked, create event display (sets its event data instance to whichever event data corresponds to event clicked)
+-	when panel clicked (but not event clicked) reset panel to show today, tomorrow, and day after events (no longer selected day)
+top panel (previously calendar panel)
+-	label with current month (e.g. “January 2019”
+-	format: see: Prototype (final).pdf
+-	left and right arrows (event buttons) reset calendar display; if left clicked, previous month, else, following month
+-	plus (event button): if clicked, create event display (event has no title, notes, nor time, and date is day selected in calendar display; if none, set to today); event not saved to events list in event data until user clicks edit button (pencil) then clicks update button (check mark)
+-	clock (event button): if clicked, creates panel showing current date and time
+-	if location event button in panel clicked, panel disappears and calendar display resets to current month)
+-	search (event button): if clicked, disables all other buttons and creates search bar (text field automatically set to “Search”) covering whole panel and new event button to edit search
+-	if search typed and enter key pressed, opens search display with whatever in text field as parameter “entry”
+-	if exit search clicked, gets rid of itself and text field and re-enables buttons; if search display being displayed, get rid of that too and reset calendar display
+
+test cases/found bugs
+* to be fixed later
+-	calendar only outlines hovering, not clicked
+-	side panel only outlines hovering, not clicked
+-	maximum number of days in month for February doesn’t account for leap years
+-	if year not four digits, doesn’t have right number of digits in string used to represent date (leads to problems everywhere with computing date)
+-	when calendar day selected belongs to month following whichever the calendar month currently is, side panel will display the wrong day for “selected day” title
+-	calendar stops outlining selected day when mouse hovers outside panel
+-	search panel only underlines hovering, not clicked
+-	when search display (now: search panel) clicked, event doesn’t disappear
+-	calendar panel (now: top panel) add button sets date of its event to current date, not whichever date currently selected
+-	search bar case sensitive when searching
